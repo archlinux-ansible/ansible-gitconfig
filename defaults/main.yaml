@@ -1,0 +1,90 @@
+---
+
+# If 'true', use /etc/gitconfig
+gitconfig__global: yes
+gitconfig__path: >-
+  {{
+    '/etc/gitconfig' if gitconfig__global
+    else ('~/.gitconfig' | expanduser )
+  }}
+
+gitconfig__pkgs:
+  - git
+  - tig
+
+gitconfig__lfs: yes
+gitconfig__lfs_pkg: git-lfs
+
+gitconfig__username: Alex Wicks
+gitconfig__email: alex@awicks.io
+gitconfig__config:
+  alias:
+    a: add
+    b: '! tig blame'
+    c: commit
+    d: diff
+    f: fetch
+    p: push
+    r: remote -v
+    s: status
+    am: commit --amend
+    bl: '! tig blame'
+    br: branch
+    ch: checkout
+    ca: commit --amend
+    co: commit
+    ci: commit -m
+    di: diff
+    fe: fetch
+    lo: '! tig log'
+    pl: pull
+    po: push -u origin
+    pu: pull
+    st: status
+    sh: show
+    rso: remote show origin
+    root: rev-parse --show-toplevel
+  color:
+    ui: auto
+  core:
+    pager: cat
+    whitespace: -trailing-space
+  diff:
+    mnemonicPrefix: 'true'
+    renames: 'true'
+    submodule: log
+  fetch:
+    recurseSubmodules: on-demand
+  'filter "lfs"':
+    clean: git-lfs clean -- %f
+    smudge: git-lfs smudge -- %f
+    process: git-lfs filter-process
+    required: 'true'
+  grep:
+    extendedRegexp: 'true'
+  log:
+    abbrevCommit: 'true'
+    follow: 'true'
+    decorate: 'false'
+  merge:
+    ff: 'false'
+  mergetool:
+    keepBackup: 'false'
+    keepTemporaries: 'false'
+    writeToTemp: 'true'
+    prompt: 'false'
+  pull:
+    rebase: merges
+  push:
+    default: upstream
+    followTags: 'true'
+  status:
+    submodulesSummary: 'true'
+    showUntrackedFiles: all
+  'color "branch"':
+    upstream: cyan
+  tag:
+    sort: version:refname
+  user:
+    name: "{{ gitconfig__username }}"
+    email: "{{ gitconfig__email }}"

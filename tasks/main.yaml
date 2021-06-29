@@ -1,0 +1,21 @@
+---
+
+- name: Install packages
+  package:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ gitconfig__pkgs }}"
+
+- name: Install LFS
+  package:
+    name: "{{ gitconfig__lfs_pkg }}"
+    state: present
+  when:
+    - gitconfig__lfs
+
+- name: "Render Configuration to {{ gitconfig__path }}"
+  template:
+    src: gitconfig.j2
+    dest: "{{ gitconfig__path }}"
+    owner: "{{ 'root' if gitconfig__global | default(ansible_user_id) }}"
+    mode: '0644'
