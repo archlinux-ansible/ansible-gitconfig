@@ -44,6 +44,8 @@ gitconfig__config:
     sh: show
     rso: remote show origin
     root: rev-parse --show-toplevel
+  blame:
+    coloring: highlightRecent
   color:
     ui: auto
   core:
