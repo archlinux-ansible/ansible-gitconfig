@@ -33,7 +33,7 @@ gitconfig__config:
     ch: checkout
     ca: commit --amend
     co: commit
-    ci: commit -m
+    cm: commit -m
     di: diff
     fe: fetch
     lo: '! tig log'
