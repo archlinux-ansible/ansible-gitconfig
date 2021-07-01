@@ -73,7 +73,7 @@ gitconfig__config:
     follow: 'true'
     decorate: 'false'
   merge:
-    ff: 'false'
+    ff: 'true'
   mergetool:
     keepBackup: 'false'
     keepTemporaries: 'false'
