@@ -18,6 +18,8 @@ gitconfig__lfs_pkg: git-lfs
 gitconfig__username: Alex Wicks
 gitconfig__email: alex@awicks.io
 gitconfig__config:
+  advice:
+    addIgnoredFile: 'false'
   alias:
     a: add
     b: '! tig blame'
@@ -32,6 +34,7 @@ gitconfig__config:
     br: branch
     ch: checkout
     ca: commit --amend
+    cl: clone
     co: commit
     cm: commit -m
     di: diff
@@ -43,6 +46,7 @@ gitconfig__config:
     st: status
     sh: show
     rso: remote show origin
+    rao: remote add origin
     root: rev-parse --show-toplevel
   blame:
     coloring: highlightRecent
