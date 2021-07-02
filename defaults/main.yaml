@@ -45,8 +45,9 @@ gitconfig__config:
     pu: pull
     st: status
     sh: show
-    rso: remote show origin
     rao: remote add origin
+    rso: remote show origin
+    rst: reset
     root: rev-parse --show-toplevel
   blame:
     coloring: highlightRecent
