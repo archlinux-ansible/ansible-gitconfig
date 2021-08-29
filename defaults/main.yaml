@@ -48,6 +48,7 @@ gitconfig__config:
     rs: reset --soft
     st: status
     sh: show
+    sw: switch
     wi: clean -fdX
     rao: remote add origin
     rso: remote show origin
