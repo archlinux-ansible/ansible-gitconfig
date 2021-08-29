@@ -41,6 +41,7 @@ gitconfig__config:
     di: diff
     fe: fetch
     lo: '! tig log'
+    me: merge
     pl: pull
     po: push -u origin
     pu: pull
