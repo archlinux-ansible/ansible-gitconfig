@@ -22,7 +22,8 @@ gitconfig__config:
     addIgnoredFile: 'false'
   alias:
     a: add
-    b: '! tig blame'
+    b: >- 
+      ! tig blame
     c: commit
     d: diff
     f: fetch
@@ -31,7 +32,8 @@ gitconfig__config:
     s: status
     w: clean -fdx
     am: commit --amend
-    bl: '! tig blame'
+    bl: >-
+      ! tig blame
     br: branch
     ch: checkout
     ca: commit --amend
@@ -40,12 +42,17 @@ gitconfig__config:
     cm: commit -m
     di: diff
     fe: fetch
-    lo: '! tig log'
+    lo: >-
+      ! tig log
     me: merge
-    pb: '! git push -u $(git remote | head -1) $(git branch --show-current)'
+    pb: >-
+      ! git push -u
+      $(git remote | head -1)
+      $(git rev-parse --abbrev-ref HEAD)
     pl: pull
     po: push -u origin
     pu: pull
+    rb: rebase
     rh: reset --hard
     rs: reset --soft
     st: status
@@ -53,8 +60,15 @@ gitconfig__config:
     sw: switch
     wi: clean -fdX
     rao: remote add origin
+    rbi: >-
+      !"f() {
+      git rebase -i HEAD~${1}
+      ;}; f"
+    rbr: rebase -i --root
     rso: remote show origin
     rst: reset
+    sta: stash
+    stp: stash pop
     root: rev-parse --show-toplevel
     wipe: clean -fdx
   blame:
@@ -62,8 +76,16 @@ gitconfig__config:
   color:
     ui: auto
   core:
-    pager: cat
+    pager: delta
     whitespace: -trailing-space
+  delta:
+    line-numbers: 'true'
+    line-numbers-left-format: >-
+      ""
+    line-numbers-right-format: >-
+      "│ "
+    navigate: 'true'
+    side-by-side: 'true'
   diff:
     mnemonicPrefix: 'true'
     renames: 'true'
@@ -77,6 +99,10 @@ gitconfig__config:
     required: 'true'
   grep:
     extendedRegexp: 'true'
+  init:
+    defaultBranch: master
+  interactive:
+    diffFilter: delta --color-only
   log:
     abbrevCommit: 'true'
     follow: 'true'
